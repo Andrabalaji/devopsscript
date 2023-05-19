@@ -13,7 +13,7 @@ pipeline{
           steps {
             sh 'cd /var/lib/jenkins/workspace/pipeline2/devopsscript' 
             sh 'cp /var/lib/jenkins/workspace/pipeline2/devopsscript/* /var/lib/jenkins/workspace/pipeline2'
-            sh 'docker build -t andrabalu/pipeline1:v1 .'
+            sh 'docker build -t andrabalu/pipeline:v1 .'
             }
         }
 
