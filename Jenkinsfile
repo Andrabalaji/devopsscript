@@ -12,13 +12,13 @@ pipeline{
         stage('Build Docker Image') {
           steps {
             sh 'cd /var/lib/jenkins/workspace/pipeline2/devopsscript'  
-            sh 'docker build -t andrabalu/pipeline2:v1 .'
+            sh 'docker build -t andrabalu/pipeline1:v1 .'
             }
         }
 
         stage('Push Image to Docker Hub') {
           steps {
-            sh'docker push andrabalu/pipeline2:v1'
+            sh'docker push andrabalu/pipeline1:v1'
             }
         }
 
