@@ -1,14 +1,14 @@
 pipeline{
     agent any
     stages{
-
+        
         stage('Clone Repo') {
           steps {
             sh 'rm -rf dockertest1'
             sh 'git clone https://github.com/Andrabalaji/devopsscript.git'
             }
         }
-
+        
         stage('Build Docker Image') {
           steps {
             sh 'cd /var/lib/jenkins/workspace/pipeline1/dockertest1'
