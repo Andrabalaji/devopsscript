@@ -11,15 +11,14 @@ pipeline{
         
         stage('Build Docker Image') {
           steps {
-            sh 'cd /var/lib/jenkins/workspace/pipeline2/devopsscript'
-            sh 'cp /var/lib/jenkins/workspace/pipeline2/devopsscript/* /var/lib/jenkins/workspace/pipeline2'  
-            sh 'docker build -t andrabalu/pipeline:v1 .'
+            sh 'cd /var/lib/jenkins/workspace/pipeline2/devopsscript'  
+            sh 'docker build -t andrabalu/pipeline2:v1 .'
             }
         }
 
         stage('Push Image to Docker Hub') {
           steps {
-            sh'docker push andrabalu/pipeline:v1'
+            sh'docker push andrabalu/pipeline2:v1'
             }
         }
 
