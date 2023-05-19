@@ -11,7 +11,7 @@ pipeline{
         
         stage('Build Docker Image') {
           steps {
-            sh 'cd /var/lib/jenkins/workspace/pipeline1/dockertest1'
+            sh 'cd /var/lib/jenkins/workspace/pipeline1/devopsscript'
             sh 'docker build -t andrabalu/pipeline1:v1 .'
             }
         }
