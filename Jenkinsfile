@@ -3,37 +3,38 @@ pipeline{
     stages{
 
         stage('Clone Repo') {
-            stages{
+          steps {
             sh 'rm -rf dockertest1'
             sh 'git https://github.com/Andrabalaji/devopsscript.git'
-        }
+            }
         }
 
         stage('Build Docker Image') {
-            stages{
+          steps {
             sh 'cd /var/lib/jenkins/workspace/pipeline1/dockertest1'
             sh 'cp /var/lib/jenkins/workspace/pipeline1/dockertest1/* /var/lib/jenkins/workspace/pipeline1'
             sh 'docker build -t andrabalu/pipeline1:v1 .'
-        }
+            }
         }
 
         stage('Push Image to Docker Hub') {
-            stages{
+          steps {
             sh'docker push andrabalu/pipeline1:v1'
-        }
+            }
         }
 
         stage('Deploy to Docker Host') {
-            stages{
+          steps {
+            sh 'docker -H tcp://10.1.1.172:2375 stop masterwebapp1'
             sh 'docker -H tcp://10.1.1.172:2375 run --rm -dit --name masterwebapp1 --hostname masterwebapp1 -p 8000:80 andrabalu/pipeline1:v1'
-        }
+            }
         }
 
         stage('Check WebApp Rechability') {
-            stages{
+          steps {
             sh 'sleep 10s'
             sh ' curl http://10.1.1.172:8000'
-        }
+            }
         }
     }
 }
